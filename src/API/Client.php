@@ -2,26 +2,18 @@
 
 namespace Vinkas\Discourse\PHP\API;
 
+use Vinkas\Discourse\PHP\Client as Discourse;
+
 class Client
 {
 
   protected $http;
+  protected Discourse $discourse;
 
-  public function __construct($domain, $ssl, $api_key, $api_username = 'system') {
-    $this->setUrl($domain, $ssl);
-    $this->http = new \GuzzleHttp\Client(['base_uri' => $this->getUrl()]);
+  public function __construct(Discourse $discourse, $api_key, $api_username = 'system') {
+    $this->discourse = $discourse;
+    $this->http = new \GuzzleHttp\Client(['base_uri' => $this->discourse->getUrl()]);
     $this->setQueryParams($api_key, $api_username);
-  }
-
-  private $url;
-
-  public function getUrl() {
-    return $this->url;
-  }
-
-  protected function setUrl($domain, $ssl) {
-    $protocol = $ssl ? 'https' : 'http';
-    $this->url = sprintf('%s://%s', $protocol, $domain);
   }
 
   protected $queryParams;

@@ -2,8 +2,12 @@
 
 namespace Vinkas\Discourse\PHP\SSO;
 
+use Vinkas\Discourse\PHP\Client as Discourse;
+
 class Client
 {
+
+  protected Discourse $discourse;
 
   protected $nonce_key = 'nonce';
 
@@ -15,7 +19,8 @@ class Client
   private $signature;
   private $nonce;
 
-  public function __construct($secret, $payload, $signature) {
+  public function __construct(Discourse $discourse, $secret, $payload, $signature) {
+    $this->discourse = $discourse;
     $this->secret = $secret;
     $this->payload = $payload;
     $this->signature = $signature;
