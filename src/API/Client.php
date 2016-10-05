@@ -64,4 +64,18 @@ class Client
     return $this->topics;
   }
 
+  public function topic($id) {
+    $topic = new Topic($this, $id);
+    return $topic;
+  }
+
+  private $categories;
+
+  public function categories() {
+    if($this->categories == null) {
+      $this->categories = new Categories($this);
+    }
+    return $this->categories;
+  }
+
 }

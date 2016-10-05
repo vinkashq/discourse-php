@@ -23,4 +23,14 @@ class Topic
     return $client->request('/t/' . $this->id, $params, 'PUT');
   }
 
+  public function updateTitle($title) {
+    $params = ['topic_id' => $this->id, 'title' => $title ];
+    return $client->request('/t/' . $this->id, $params, 'PUT');
+  }
+
+  public function updateCategory($category_id) {
+    $params = ['topic_id' => $this->id, 'category_id' => $category_id ];
+    return $client->request('/t/' . $this->id, $params, 'PUT');
+  }
+
 }
