@@ -12,16 +12,16 @@ class Topics
   }
 
   public function latest() {
-    return $client->request('/latest.json');
+    return $this->client->request('/latest.json');
   }
 
   public function top() {
-    return $client->request('/top.json');
+    return $this->client->request('/top.json');
   }
 
   public function create($title, $raw, $category) {
     $params = ['title' => $title, 'raw' => $raw, 'category' => $category];
-    return $client->request('/posts', $params, 'POST');
+    return $this->client->request('/posts', $params, 'POST');
   }
 
 }

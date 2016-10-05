@@ -78,4 +78,13 @@ class Client
     return $this->categories;
   }
 
+  private $posts;
+
+  public function posts() {
+    if($this->posts == null) {
+      $this->posts = new Posts($this);
+    }
+    return $this->posts;
+  }
+
 }
