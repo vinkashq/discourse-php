@@ -1,6 +1,6 @@
 {
     "name": "vinkas/discourse-php",
-    "description": "Lets you use Discourse as the forum or community engine for a PHP website using API.",
+    "description": "Lets you use Discourse as the forum or community engine for a PHP website using API and SSO.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -23,7 +23,7 @@
             "Vinkas\\Discourse\\PHP\\": "src/"
         }
     },
-    "keywords": ["api", "discourse", "vinkas"],
+    "keywords": ["sso", "api", "discourse", "vinkas"],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
