@@ -66,9 +66,13 @@ class Client
     return hash_hmac('sha256', $this->getDecodedPayload(), $this->getSecret());
   }
 
-  protected function getResponseUrl($callbackUrl, array $userParams)
+  protected function getResponseUrl(array $userParams)
   {
-    return $callbackUrl . '?' . $this->getResponseQuery($userParams);
+    return $this->getCallbackUrl() . '?' . $this->getResponseQuery($userParams);
+  }
+  
+  public function getCallbackUrl() {
+    return $this->discourse->getUrl() . "/session/sso_login";
   }
 
   protected function getResponseQuery(array $userParams)
