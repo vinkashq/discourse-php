@@ -13,7 +13,7 @@ composer require vinkas/discourse-php
 ## Usage
 
 ```php
-$discourse = new Vinkas\Discourse\PHP\Client('discouse.example.com', true);  // set true if ssl enabled
+$discourse = new Vinkas\Discourse\PHP\Client('discourse.example.com', true);  // set true if ssl enabled
 ```
 
 ### API
