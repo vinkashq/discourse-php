@@ -7,7 +7,7 @@ use Vinkas\Discourse\PHP\Client as Discourse;
 class Client
 {
 
-  protected Discourse $discourse;
+  protected $discourse;
 
   protected $nonce_key = 'nonce';
 

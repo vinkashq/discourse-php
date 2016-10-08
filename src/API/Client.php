@@ -8,7 +8,7 @@ class Client
 {
 
   protected $http;
-  protected Discourse $discourse;
+  protected $discourse;
 
   public function __construct(Discourse $discourse, $api_key, $api_username = 'system') {
     $this->discourse = $discourse;
