@@ -19,9 +19,15 @@ class Client
   private $signature;
   private $nonce;
 
-  public function __construct(Discourse $discourse, $secret, $payload, $signature) {
+  public function __construct(Discourse $discourse, $secret, $payload = null, $signature = null) {
     $this->discourse = $discourse;
     $this->secret = $secret;
+    if($payload == null) {
+      $payload = $_GET['sso'];
+    }
+    if($signature == null) {
+      $signature = $_GET['sig'];
+    }
     $this->payload = $payload;
     $this->signature = $signature;
   }
@@ -70,7 +76,7 @@ class Client
   {
     return $this->getCallbackUrl() . '?' . $this->getResponseQuery($userParams);
   }
-  
+
   public function getCallbackUrl() {
     return $this->discourse->getUrl() . "/session/sso_login";
   }

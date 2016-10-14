@@ -26,10 +26,7 @@ $api->topics()->create('TITLE', 'CONTENT', 'CATEGORY_SLUG')
 ### SSO
 
 ```php
-$payload = $_GET['sso'];
-$signature = $_GET['sig'];
-
-$sso = $discourse->sso('SECRET', $payload, $signature);
+$sso = $discourse->sso('SECRET');
 
 if ($sso->isValid()) {
   $userParams = array(
@@ -40,7 +37,6 @@ if ($sso->isValid()) {
       // for more available fields https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
   );
 
-  $url = $sso->getResponseUrl($userParams)
-  header('Location: ' . $url);
+  header('Location: ' . $sso->getResponseUrl($userParams));
 }
 ```

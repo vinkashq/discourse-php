@@ -23,7 +23,7 @@ class Client
     $this->url = sprintf('%s://%s', $protocol, $domain);
   }
 
-  public function sso($secret, $payload, $signature) {
+  public function sso($secret, $payload = null, $signature = null) {
     return new SSOClient($this, $secret, $payload, $signature);
   }
 
