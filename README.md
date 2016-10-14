@@ -47,5 +47,4 @@ $userParams = array(
 
 $url = $sso->getResponseUrl($userParams)
 header('Location: ' . $url);
-exit(0);
 ```
