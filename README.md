@@ -31,20 +31,16 @@ $signature = $_GET['sig'];
 
 $sso = $discourse->sso('SECRET', $payload, $signature);
 
-if (!($sso->isValid())) {
-    header("HTTP/1.1 403 Forbidden");
-    echo("Bad SSO request");
-    die();
+if ($sso->isValid()) {
+  $userParams = array(
+      'external_id' => 'USER_ID',
+      'email'     => 'EMAIL_ADDRESS',
+      'username' => 'USERNAME',  // optional
+      'name'     => 'FULL_NAME'  // optional
+      // for more available fields https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
+  );
+
+  $url = $sso->getResponseUrl($userParams)
+  header('Location: ' . $url);
 }
-
-$userParams = array(
-    'external_id' => 'USER_ID',
-    'email'     => 'EMAIL_ADDRESS',
-    'username' => 'USERNAME',  // optional
-    'name'     => 'FULL_NAME'  // optional
-    // for more available fields https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
-);
-
-$url = $sso->getResponseUrl($userParams)
-header('Location: ' . $url);
 ```
