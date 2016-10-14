@@ -13,7 +13,7 @@ class Posts
 
   public function create($topic_id, $raw) {
     $params = ['topic_id' => $topic_id, 'raw' => $raw ];
-    return $this->client->request('/posts', $params, 'POST');
+    return $this->client->postRequest('/posts', $params);
   }
 
 }

@@ -12,12 +12,12 @@ class Categories
   }
 
   public function list() {
-    return $this->client->request('/categories.json');
+    return $this->client->getRequest('/categories.json');
   }
 
   public function create($name, $color, $text_color) {
     $params = ['name' => $name, 'color' => $color, 'text_color' => $text_color];
-    return $this->client->request('/categories', $params, 'POST');
+    return $this->client->postRequest('/categories', $params);
   }
 
 }

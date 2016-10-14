@@ -14,17 +14,17 @@ class User
   }
 
   public function info() {
-    return $this->client->request('/users/' . $this->username . '.json', $params, 'GET');
+    return $this->client->getRequest('/users/' . $this->username . '.json');
   }
 
   public function updateUsername($new_username) {
     $params = ['new_username' => $new_username ];
-    return $this->client->request('/users/' . $this->username . '/preferences/username', $params, 'PUT');
+    return $this->client->putRequest('/users/' . $this->username . '/preferences/username', $params);
   }
 
   public function updateEmail($email) {
     $params = ['email' => $email ];
-    return $this->client->request('/users/' . $this->username . '/preferences/email', $params, 'PUT');
+    return $this->client->putRequest('/users/' . $this->username . '/preferences/email', $params);
   }
 
 }
