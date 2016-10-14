@@ -19,5 +19,10 @@ class Topics
   public function list($type) {
     return $this->client->request('/admin/users/list/' . $type . '.json');
   }
+  
+  public function invite($email) {
+    $params = ['email' => $email];
+    return $this->client->request('/invites', $params, 'POST');
+  }
 
 }
