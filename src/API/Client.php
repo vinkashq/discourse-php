@@ -18,11 +18,11 @@ class Client
 
   protected $queryParams;
 
-  protected function getQueryParams() {
+  protected function getDefaultQueryParams() {
     return $this->queryParams;
   }
 
-  protected function setQueryParams($api_key, $api_username) {
+  protected function setDefaultQueryParams($api_key, $api_username) {
     $this->queryParams = array();
     $this->queryParams['api_key'] = $api_key;
     $this->queryParams['api_username'] = $api_username;
@@ -32,12 +32,7 @@ class Client
     $this->queryParams['api_username'] = $api_username;
   }
 
-  public function request($path, $queryParams = null, $method = "GET") {
-    if ($queryParams == null) {
-      $queryParams = array();
-    }
-    $queryParams = array_merge($this->getQueryParams(), $queryParams);
-    $params = ['query' => $queryParams];
+  public function request($method, $path, $params) {
     $res = $this->http->request($method, $path, $params);
     if ($res->getStatusCode() == 200) {
       $body = $res->getBody();
@@ -45,6 +40,31 @@ class Client
       return $json;
     }
     return null;
+  }
+
+  public function getRequest($path, $params = null) {
+    if ($params == null) {
+      $params = array();
+    }
+    $params = array_merge($this->getDefaultQueryParams(), $params);
+    $params = ['query' => $queryParams];
+    return $this->request('GET', $path, $params)
+  }
+
+  public function putRequest($path, $params = null) {
+    if ($params == null) {
+      $params = array();
+    }
+    $params = ['query' => $this->getDefaultQueryParams(), 'multipart' => $params];
+    return $this->request('PUT', $path, $params)
+  }
+
+  public function postRequest($path, $params = null) {
+    if ($params == null) {
+      $params = array();
+    }
+    $params = ['query' => $this->getDefaultQueryParams(), 'form_params' => $params];
+    return $this->request('POST', $path, $params)
   }
 
   private $topics;
