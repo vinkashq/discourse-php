@@ -33,6 +33,10 @@ class Topic
     return $this->client->putRequest('/t/' . $this->id, $params);
   }
 
+  public function posts() {
+    return $this->client->getRequest('/t/' . $this->id . '/posts.json');
+  }
+
   public function createPost($raw) {
     return $this->client->posts()->create($this->id, $raw);
   }
