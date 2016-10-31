@@ -11,9 +11,8 @@ composer require vinkas/discourse-php
 ```
 
 ## Documentation
----
 
-### Basic Usage
+### Creating discourse client
 
 ```php
 $discourse = new Vinkas\Discourse\PHP\Client('discourse.example.com', true);  // set true if ssl enabled
@@ -21,20 +20,4 @@ $discourse = new Vinkas\Discourse\PHP\Client('discourse.example.com', true);  //
 
 ### [API](https://codiss.com/t/discourse-api-documentation-for-php/14)
 
-### SSO
-
-```php
-$sso = $discourse->sso('SECRET');
-
-if ($sso->isValid()) {
-  $userParams = array(
-      'external_id' => 'USER_ID',
-      'email'     => 'EMAIL_ADDRESS',
-      'username' => 'USERNAME',  // optional
-      'name'     => 'FULL_NAME'  // optional
-      // for more available fields https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
-  );
-
-  header('Location: ' . $sso->getResponseUrl($userParams));
-}
-```
+### [SSO](https://codiss.com/t/discourse-sso-client-documentation-for-php/15)
