@@ -1,4 +1,4 @@
-# Discourse SSO and API Helper for PHP
+# discourse-php
 
 Lets you use Discourse as the forum or community engine for a PHP website using API and SSO.
 
@@ -10,18 +10,16 @@ The package is registered at Packagist as [vinkas/discourse-php](https://packagi
 composer require vinkas/discourse-php
 ```
 
-## Usage
+## Documentation
+---
+
+### Basic Usage
 
 ```php
 $discourse = new Vinkas\Discourse\PHP\Client('discourse.example.com', true);  // set true if ssl enabled
 ```
 
-### API
-
-```php
-$api = $discourse->api('API_KEY', 'API_USERNAME');
-$api->topics()->create('TITLE', 'CONTENT', 'CATEGORY_SLUG')
-```
+### [API](https://codiss.com/t/discourse-api-documentation-for-php/14)
 
 ### SSO
 
