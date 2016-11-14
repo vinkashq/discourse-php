@@ -47,8 +47,8 @@ class Client
       $params = array();
     }
     $params = array_merge($this->getDefaultQueryParams(), $params);
-    $params = ['query' => $queryParams];
-    return $this->request('GET', $path, $params)
+    $params = ['query' => $params];
+    return $this->request('GET', $path, $params);
   }
 
   public function putRequest($path, $params = null) {
@@ -56,7 +56,7 @@ class Client
       $params = array();
     }
     $params = ['query' => $this->getDefaultQueryParams(), 'multipart' => $params];
-    return $this->request('PUT', $path, $params)
+    return $this->request('PUT', $path, $params);
   }
 
   public function postRequest($path, $params = null) {
@@ -64,7 +64,7 @@ class Client
       $params = array();
     }
     $params = ['query' => $this->getDefaultQueryParams(), 'form_params' => $params];
-    return $this->request('POST', $path, $params)
+    return $this->request('POST', $path, $params);
   }
 
   private $topics;
