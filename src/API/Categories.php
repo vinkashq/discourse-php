@@ -11,7 +11,7 @@ class Categories
     $this->client = $client;
   }
 
-  public function list() {
+  public function all() {
     return $this->client->getRequest('/categories.json');
   }
 
