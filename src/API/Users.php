@@ -16,7 +16,7 @@ class Topics
     return $this->client->postRequest('/users', $params);
   }
 
-  public function list($type) {
+  public function filterByType($type) {
     return $this->client->getRequest('/admin/users/list/' . $type . '.json');
   }
 
