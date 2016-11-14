@@ -11,7 +11,7 @@ class Categories
     $this->client = $client;
   }
 
-  public function list() {
+  public function catList() {
     return $this->client->getRequest('/categories.json');
   }
 
