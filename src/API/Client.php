@@ -13,7 +13,7 @@ class Client
   public function __construct(Discourse $discourse, $api_key, $api_username = 'system') {
     $this->discourse = $discourse;
     $this->http = new \GuzzleHttp\Client(['base_uri' => $this->discourse->getUrl()]);
-    $this->setQueryParams($api_key, $api_username);
+    $this->setDefaultQueryParams($api_key, $api_username);
   }
 
   protected $queryParams;
