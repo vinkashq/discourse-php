@@ -2,7 +2,7 @@
 
 namespace Vinkas\Discourse\PHP\API;
 
-class Topics
+class Users
 {
 
   protected $client;
