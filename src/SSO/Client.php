@@ -72,7 +72,7 @@ class Client
     return hash_hmac('sha256', $this->getDecodedPayload(), $this->getSecret());
   }
 
-  protected function getResponseUrl(array $userParams)
+  public function getResponseUrl(array $userParams)
   {
     return $this->getCallbackUrl() . '?' . $this->getResponseQuery($userParams);
   }
@@ -85,7 +85,7 @@ class Client
   {
     $response = [
       $this->payload_response_key   => $this->getResponsePayload($userParams),
-      $this->signature_response_key => $this->getResponsePayloadSignature(),
+      $this->signature_response_key => $this->getResponsePayloadSignature($userParams),
     ];
     return http_build_query($response);
   }
@@ -97,9 +97,9 @@ class Client
     return base64_encode(http_build_query($params));
   }
 
-  protected function getResponsePayloadSignature()
+  protected function getResponsePayloadSignature(array $userParams)
   {
-    return hash_hmac('sha256', $this->getResponsePayload(), $this->getSecret());
+    return hash_hmac('sha256', $this->getResponsePayload($userParams), $this->getSecret());
   }
 
 }
