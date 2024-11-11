@@ -1,9 +1,8 @@
 <?php
 
-namespace Vinkas\Discourse\PHP;
+namespace Vinkas\Discourse;
 
-use Vinkas\Discourse\PHP\SSO\Client as SSOClient;
-use Vinkas\Discourse\PHP\API\Client as APIClient;
+use Vinkas\Discourse\SSO\Helper;
 
 class Client
 {
@@ -24,11 +23,7 @@ class Client
   }
 
   public function sso($secret, $payload = null, $signature = null) {
-    return new SSOClient($this, $secret, $payload, $signature);
-  }
-
-  public function api($key, $username = 'system') {
-    return new APIClient($this, $key, $username);
+    return new Helper($this, $secret, $payload, $signature);
   }
 
 }

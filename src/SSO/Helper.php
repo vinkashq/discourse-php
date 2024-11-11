@@ -1,10 +1,10 @@
 <?php
 
-namespace Vinkas\Discourse\PHP\SSO;
+namespace Vinkas\Discourse\SSO;
 
-use Vinkas\Discourse\PHP\Client as Discourse;
+use Vinkas\Discourse\Client as Discourse;
 
-class Client
+class Helper
 {
 
   protected $discourse;
