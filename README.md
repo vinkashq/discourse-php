@@ -1,41 +1,34 @@
 # discourse-php
 
-Lets you use Discourse as the forum or community engine for a PHP website using API and SSO.
+PHP library to authenticate your forum using Discourse Connect
 
 ## Installation
 
-The package is registered at Packagist as [vinkas/discourse-php](https://packagist.org/packages/vinkas/discourse-php) and can be installed using composer:
+The package [`vinkas/discourse`](https://packagist.org/packages/vinkas/discourse) can be installed using composer via packagist.
 
 ```
-composer require vinkas/discourse-php
+composer require vinkas/discourse
 ```
 
 ## Documentation
 
-### Creating discourse client
+### Creating a Discourse client
 
 ```php
-$discourse = new Vinkas\Discourse\PHP\Client('discourse.example.com', true);  // set true if ssl enabled
+$discourse = new Vinkas\Discourse\Client('discourse.example.com', true);  // set true if ssl enabled
 ```
 
-### [API](https://codiss.com/t/discourse-api-documentation-for-php/14)
-
-```
-$api = $discourse->api('API_KEY', 'API_USERNAME');
-$api->topics()->create('TITLE', 'CONTENT', 'CATEGORY_SLUG')
-```
-
-### [SSO](https://codiss.com/t/discourse-sso-client-documentation-for-php/15)
+### Discourse Connect
 
 ```
 $payload = $_GET['sso'];
 $signature = $_GET['sig'];
 
-$sso = $discourse->sso('SECRET', $payload, $signature);
+$connect = $discourse->connect('SECRET', $payload, $signature);
 
-if (!($sso->isValid())) {
+if (!($connect->isValid())) {
     header("HTTP/1.1 403 Forbidden");
-    echo("Bad SSO request");
+    echo("Bad Discourse Connect request");
     die();
 }
 
@@ -44,10 +37,12 @@ $userParams = array(
     'email'     => 'EMAIL_ADDRESS',
     'username' => 'USERNAME',  // optional
     'name'     => 'FULL_NAME'  // optional
-    // for more available fields https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045
+    // for more available fields https://meta.discourse.org/t/13045
 );
 
-$url = $sso->getResponseUrl($userParams)
+$url = $connect->getResponseUrl($userParams)
 header('Location: ' . $url);
 exit(0);
 ```
+
+Visit https://meta.discourse.org/t/setup-discourseconnect-official-single-sign-on-for-discourse-sso/13045 for more details about Discourse Connect.

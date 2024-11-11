@@ -2,8 +2,6 @@
 
 namespace Vinkas\Discourse;
 
-use Vinkas\Discourse\SSO\Helper;
-
 class Client
 {
 
@@ -22,8 +20,8 @@ class Client
     $this->url = sprintf('%s://%s', $protocol, $domain);
   }
 
-  public function sso($secret, $payload = null, $signature = null) {
-    return new Helper($this, $secret, $payload, $signature);
+  public function connect($secret, $payload = null, $signature = null) {
+    return new Connect($this, $secret, $payload, $signature);
   }
 
 }

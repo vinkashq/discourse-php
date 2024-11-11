@@ -1,6 +1,6 @@
 {
     "name": "vinkas/discourse",
-    "description": "PHP library to authenticate a Discourse forum using SSO",
+    "description": "PHP library to authenticate your forum using Discourse Connect",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -22,7 +22,7 @@
             "Vinkas\\Discourse\\": "src/"
         }
     },
-    "keywords": ["sso", "api", "discourse", "vinkas"],
+    "keywords": ["connect", "sso", "discourse", "vinkas"],
     "extra": {
         "branch-alias": {
             "dev-main": "2.0-dev"
